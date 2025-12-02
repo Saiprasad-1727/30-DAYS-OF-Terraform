@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "my-buckets" {
 }
 
 resource "aws_s3_bucket" "buckets-for-each" {
-  for_each = var.bucket_names_for_each
+  for_each = toset(var.bucket_names_for_each)
   bucket   = each.key
 
   tags = var.tags
